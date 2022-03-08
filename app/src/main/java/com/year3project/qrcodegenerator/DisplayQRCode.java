@@ -26,7 +26,7 @@ public class DisplayQRCode extends AppCompatActivity {
         qrImage = findViewById(R.id.qrcodedisplay);
 
         Intent intent = getIntent();
-        String logData = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        String logData = intent.getStringExtra(GeneratorFragment.EXTRA_MESSAGE);
 
         QRGEncoder qrgEncoder = new QRGEncoder(logData, null, QRGContents.Type.TEXT, 500);
         try {
@@ -38,7 +38,7 @@ public class DisplayQRCode extends AppCompatActivity {
     }
 
     public void backToForm(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, GeneratorFragment.class);
         startActivity(intent);
     }
 

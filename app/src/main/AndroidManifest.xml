@@ -12,6 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QRCodeGenerator">
         <activity
+            android:name=".SlideAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".TutorialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScheduleFragment"
+            android:exported="false" />
+        <activity
+            android:name=".InformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GeneratorFragment"
+            android:exported="false" />
+        <activity
+            android:name=".AboutFragment"
+            android:exported="false" />
+        <activity
             android:name=".DisplayQRCode"
             android:exported="true" />
         <activity
