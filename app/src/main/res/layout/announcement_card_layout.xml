@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/text_view_title"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="#33000000"
+    app:strokeWidth="1dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="8dp"
+    app:cardMaxElevation="10dp"
+    app:cardPreventCornerOverlap="true"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/card_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-black"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="Student Vaccination Profile"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/card_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_title"
+            android:layout_marginTop="13dp"
+            android:fontFamily="sans-serif"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="SHEEEEEESSSH! AM SO RITS YO MAGENGGENG, TO GUARIN HAPE BERTDIY TO YUUUUUUUUU, YU WANT DIS DIS? AM SO RITS YU MAGENGGENG"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/card_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_message"
+            android:layout_marginTop="20dp"
+            android:background="#1A000000"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="10dp"
+            android:text="03/13/2022"
+            android:textColor="#6c757d"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -14,6 +14,17 @@
         <entry key="..\:/Users/Harold/AndroidStudioProjects/QR-Code-Generator-App/app/src/main/res/menu/bottom_menu.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Harold/AndroidStudioProjects/QRCodeGenerator/app/src/main/res/layout/activity_display_qrcode.xml" value="0.2368659420289855" />
         <entry key="..\:/Users/Harold/AndroidStudioProjects/QRCodeGenerator/app/src/main/res/layout/activity_main.xml" value="0.2368659420289855" />
+        <entry key="app/src/main/res/drawable/ic_baseline_qr_code_24.xml" value="0.2085" />
+        <entry key="app/src/main/res/layout/activity_about_fragment.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/activity_display_qrcode.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/activity_generator_fragment.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/activity_information.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/activity_schedule_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_slider_adapter.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/activity_tutorial.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/layout/announcement_card_layout.xml" value="0.2006340579710145" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.3098958333333333" />
       </map>
     </option>
   </component>
