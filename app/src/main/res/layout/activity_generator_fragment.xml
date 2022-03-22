@@ -112,7 +112,7 @@
             style="@style/Widget.AppCompat.EditText"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:drawableLeft="@drawable/thermometer"
+            android:drawableLeft="@drawable/gender"
             android:drawablePadding="10dp"
             android:layout_marginTop="24dp"
             android:ems="10"
