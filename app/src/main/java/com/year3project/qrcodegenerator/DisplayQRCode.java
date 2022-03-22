@@ -38,8 +38,7 @@ public class DisplayQRCode extends AppCompatActivity {
     }
 
     public void backToForm(View view) {
-        Intent intent = new Intent(this, GeneratorFragment.class);
-        startActivity(intent);
+        finish();
     }
 
 

@@ -67,14 +67,16 @@ public class GeneratorFragment extends Fragment {
 
         if (!TextUtils.isEmpty(fullName_text) && !TextUtils.isEmpty(contactNumber_text) && !TextUtils.isEmpty(address_text) &&
                 !TextUtils.isEmpty(age_text) && !TextUtils.isEmpty(temperature_text) && !TextUtils.isEmpty(gender_text) &&
-                !TextUtils.isEmpty(reason_text)) {
+                !TextUtils.isEmpty(reason_text) && fullName_text.length() <= 255 && contactNumber_text.length() <= 12 &&
+                address_text.length() <= 255 && age_text.length() <= 2 && temperature_text.length() <= 5 && gender_text.length() <= 6 &&
+                reason_text.length() <= 255) {
             String logData = getFormData();
 
             Intent intent = new Intent(getActivity(), DisplayQRCode.class);
             intent.putExtra(EXTRA_MESSAGE, logData);
             startActivity(intent);
         } else {
-            Toast.makeText(getActivity(), "Please fill up the form", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "Please fill up form properly", Toast.LENGTH_LONG).show();
         }
 
     }
