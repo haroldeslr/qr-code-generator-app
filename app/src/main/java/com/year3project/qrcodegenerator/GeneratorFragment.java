@@ -1,6 +1,8 @@
 package com.year3project.qrcodegenerator;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,13 +20,22 @@ public class GeneratorFragment extends Fragment {
 
     public static final String EXTRA_MESSAGE = "com.year3project.qrcodegenerator.MESSAGE";
 
-    EditText fullName;
-    EditText contactNumber;
-    EditText address;
-    EditText age;
-    EditText temperature;
-    EditText gender;
-    EditText reason;
+    public static final String userDataPreferences = "UserDataPreferences";
+    public static final String fullNameKey = "FullNameKey";
+    public static final String ageKey = "AgeKey";
+    public static final String addressKey = "AddressKey";
+    public static final String contactNumberKey = "ContactNumberKey";
+    public static final String purposeKey = "PurposeKey";
+    public static final String temperatureKey = "temperatureKey";
+    public static final String genderKey = "GenderKey";
+
+    private EditText fullName;
+    private EditText contactNumber;
+    private EditText address;
+    private EditText age;
+    private EditText temperature;
+    private EditText gender;
+    private EditText reason;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,12 +59,30 @@ public class GeneratorFragment extends Fragment {
         gender = rootView.findViewById(R.id.tf_gender);
         reason = rootView.findViewById(R.id.tf_purpose);
 
+        setUserDataForm();
+
         return rootView;
-
-
         //return inflater.inflate(R.layout.fragment_generator, container, false);
+    }
 
+    private void setUserDataForm() {
+        SharedPreferences userData = getActivity().getSharedPreferences(userDataPreferences, Context.MODE_PRIVATE);
 
+        String fullNameValue = userData.getString(fullNameKey, "");
+        String contactNumberValue = userData.getString(contactNumberKey, "");
+        String addressValue = userData.getString(addressKey, "");
+        String ageValue = userData.getString(ageKey, "");
+        String temperatureValue = userData.getString(temperatureKey, "");
+        String genderValue = userData.getString(genderKey, "");
+        String purposeValue = userData.getString(purposeKey, "");
+
+        fullName.setText(fullNameValue);
+        contactNumber.setText(contactNumberValue);
+        address.setText(addressValue);
+        age.setText(ageValue);
+        temperature.setText(temperatureValue);
+        gender.setText(genderValue);
+        reason.setText(purposeValue);
     }
 
     public void displayQRCodeActivity() {
@@ -72,6 +101,18 @@ public class GeneratorFragment extends Fragment {
                 reason_text.length() <= 255) {
             String logData = getFormData();
 
+            // save user data to sharedpreferences
+            SharedPreferences sharedPreferences = getActivity().getSharedPreferences(userDataPreferences, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(fullNameKey, fullName_text);
+            editor.putString(contactNumberKey, contactNumber_text);
+            editor.putString(addressKey, address_text);
+            editor.putString(ageKey, age_text);
+            editor.putString(temperatureKey, temperature_text);
+            editor.putString(genderKey, gender_text);
+            editor.putString(purposeKey, reason_text);
+            editor.commit();
+
             Intent intent = new Intent(getActivity(), DisplayQRCode.class);
             intent.putExtra(EXTRA_MESSAGE, logData);
             startActivity(intent);
@@ -82,12 +123,12 @@ public class GeneratorFragment extends Fragment {
     }
 
     private String getFormData() {
+        String qrCodeIdentifier = "UPANG_QR_CODE";
         String separator = ",,,,";
-        String logData = fullName.getText().toString() + separator + contactNumber.getText().toString() + separator + address.getText().toString() +
+        String logData = qrCodeIdentifier + fullName.getText().toString() + separator + contactNumber.getText().toString() + separator + address.getText().toString() +
                 separator + age.getText().toString() + separator + temperature.getText().toString() + separator + gender.getText().toString() +
                 separator + reason.getText().toString();
 
         return logData;
     }
-
 }

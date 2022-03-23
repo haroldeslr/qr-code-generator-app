@@ -61,7 +61,7 @@ public class GetAnnouncement extends AsyncTask<Void, Void, ArrayList<Announcemen
 
     @Override
     protected ArrayList<AnnouncementModel> doInBackground(Void... voids) {
-        String uploadURL = "https://upang-cls.000webhostapp.com/php/get_all_announcement.php";
+        String uploadURL = "https://pucls.000webhostapp.com/php/get_all_announcement.php";
         try {
             URL url = new URL(uploadURL);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
