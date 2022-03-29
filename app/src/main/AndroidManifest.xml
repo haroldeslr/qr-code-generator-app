@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QRCodeGenerator">
         <activity
+            android:name=".DataPrivacyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelfieActivity"
+            android:exported="false" />
+        <activity
             android:name=".SliderAdapter"
             android:exported="false" />
         <activity

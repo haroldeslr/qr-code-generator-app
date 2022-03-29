@@ -44,7 +44,7 @@ public class TutorialActivity extends AppCompatActivity {
         mNextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),InformationActivity.class);
+                Intent intent = new Intent(getApplicationContext(),SelfieActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -52,7 +52,7 @@ public class TutorialActivity extends AppCompatActivity {
     }
 
     public void addDotsIndicator(int position) {
-        mDots = new TextView[3];
+        mDots = new TextView[6];
         mDotLayout.removeAllViews();
 
         for(int i = 0; i < mDots.length; i++){
