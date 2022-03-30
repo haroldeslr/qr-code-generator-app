@@ -19,6 +19,8 @@ public class InformationActivity extends AppCompatActivity {
     ScheduleFragment scheduleFragment = new ScheduleFragment();
     AboutFragment aboutFragment = new AboutFragment();
 
+    private String currentPhotoPath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class InformationActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
 
 
 

@@ -1,6 +1,8 @@
 package com.year3project.qrcodegenerator;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,12 +11,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class GeneratorFragment extends Fragment {
 
@@ -28,6 +38,7 @@ public class GeneratorFragment extends Fragment {
     public static final String purposeKey = "PurposeKey";
     public static final String temperatureKey = "temperatureKey";
     public static final String genderKey = "GenderKey";
+    public static final String tempImageNameKey = "TempImageNameKey";
 
     private EditText fullName;
     private EditText contactNumber;
@@ -36,6 +47,14 @@ public class GeneratorFragment extends Fragment {
     private EditText temperature;
     private EditText gender;
     private EditText reason;
+    private TextView buildings;
+
+    boolean[] selectedLanguage;
+    ArrayList<Integer> langList = new ArrayList<>();
+    String[] langArray = {"PTS", "CSDL/ITS", "OP (OFFICE OF THE PRESIDENT)", "FVR", "CMA", "BASIC ED", "CHS", "GYM", "STUDENT PLAZA", "PHINMA GARDEN", "NORTH HALL", "MBA HALL", "FACULTY CENTER"};
+
+    private String selectedBuilding;
+    private String tempImageName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,11 +77,94 @@ public class GeneratorFragment extends Fragment {
         temperature = rootView.findViewById(R.id.tf_temp);
         gender = rootView.findViewById(R.id.tf_gender);
         reason = rootView.findViewById(R.id.tf_purpose);
+        buildings = rootView.findViewById(R.id.building_selector);
 
         setUserDataForm();
 
+        // initialize selected language array
+        selectedLanguage = new boolean[langArray.length];
+
+        buildings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Initialize alert dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+
+                // set title
+                builder.setTitle("Select Buildings");
+
+                // set dialog non cancelable
+                builder.setCancelable(false);
+
+                builder.setMultiChoiceItems(langArray, selectedLanguage, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                        // check condition
+                        if (b) {
+                            // when checkbox selected
+                            // Add position  in lang list
+                            langList.add(i);
+                            // Sort array list
+                            Collections.sort(langList);
+                        } else {
+                            // when checkbox unselected
+                            // Remove position from langList
+                            langList.remove(Integer.valueOf(i));
+                        }
+                    }
+                });
+
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Initialize string builder
+                        StringBuilder stringBuilder = new StringBuilder();
+                        // use for loop
+                        for (int j = 0; j < langList.size(); j++) {
+                            // concat array value
+                            stringBuilder.append(langArray[langList.get(j)]);
+                            // check condition
+                            if (j != langList.size() - 1) {
+                                // When j value  not equal
+                                // to lang list size - 1
+                                // add comma
+                                stringBuilder.append(", ");
+                            }
+                        }
+                        // set text on textView
+                        buildings.setText(stringBuilder.toString());
+                        selectedBuilding = stringBuilder.toString();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // dismiss dialog
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNeutralButton("Clear All", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // use for loop
+                        for (int j = 0; j < selectedLanguage.length; j++) {
+                            // remove all selection
+                            selectedLanguage[j] = false;
+                            // clear language list
+                            langList.clear();
+                            // clear text view value
+                            buildings.setText("");
+                        }
+                    }
+                });
+                // show dialog
+                builder.show();
+            }
+        });
+
+
         return rootView;
-        //return inflater.inflate(R.layout.fragment_generator, container, false);
     }
 
     private void setUserDataForm() {
@@ -75,6 +177,7 @@ public class GeneratorFragment extends Fragment {
         String temperatureValue = userData.getString(temperatureKey, "");
         String genderValue = userData.getString(genderKey, "");
         String purposeValue = userData.getString(purposeKey, "");
+        tempImageName = userData.getString(tempImageNameKey, "");
 
         fullName.setText(fullNameValue);
         contactNumber.setText(contactNumberValue);
@@ -127,10 +230,10 @@ public class GeneratorFragment extends Fragment {
     private String getFormData() {
         String qrCodeIdentifier = "UPANG_QR_CODE";
         String separator = ",,,,";
-        String logData = qrCodeIdentifier + fullName.getText().toString() + separator + contactNumber.getText().toString() + separator + address.getText().toString() +
-                separator + age.getText().toString() + separator + temperature.getText().toString() + separator + gender.getText().toString() +
-                separator + reason.getText().toString();
-
+        String logData = qrCodeIdentifier + fullName.getText().toString() + separator + contactNumber.getText().toString() + separator +
+                address.getText().toString() + separator + age.getText().toString() + separator + temperature.getText().toString() + separator +
+                gender.getText().toString() + separator + reason.getText().toString() + separator + selectedBuilding + separator + tempImageName;
+        Log.i("Test", logData);
         return logData;
     }
 }

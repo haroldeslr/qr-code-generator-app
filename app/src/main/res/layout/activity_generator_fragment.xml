@@ -6,153 +6,175 @@
     android:layout_height="match_parent"
     tools:context=".GeneratorFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Information Form"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="20dp">
 
-        <EditText
-            android:id="@+id/tf_age"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/hashtag"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Age"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="@+id/tf_fullname"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tf_fullname"
-            app:layout_constraintTop_toBottomOf="@+id/tf_fullname" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Information Form"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/tf_address"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/contact"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Address"
-            android:inputType="textCapSentences"
-            app:layout_constraintEnd_toEndOf="@+id/tf_age"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tf_age"
-            app:layout_constraintTop_toBottomOf="@+id/tf_age" />
+            <EditText
+                android:id="@+id/tf_age"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/hashtag"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Age"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@+id/tf_fullname"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tf_fullname"
+                app:layout_constraintTop_toBottomOf="@+id/tf_fullname" />
 
-        <EditText
-            android:id="@+id/tf_contact_number"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/phone"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Contact Number"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="@+id/tf_address"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tf_address"
-            app:layout_constraintTop_toBottomOf="@+id/tf_address" />
+            <EditText
+                android:id="@+id/tf_address"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/contact"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Address"
+                android:inputType="textCapSentences"
+                app:layout_constraintEnd_toEndOf="@+id/tf_age"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tf_age"
+                app:layout_constraintTop_toBottomOf="@+id/tf_age" />
 
-        <EditText
-            android:id="@+id/tf_purpose"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/clipboard"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Purpose"
-            android:inputType="textCapSentences"
-            app:layout_constraintEnd_toEndOf="@+id/tf_contact_number"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tf_contact_number"
-            app:layout_constraintTop_toBottomOf="@+id/tf_contact_number" />
+            <EditText
+                android:id="@+id/tf_contact_number"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/phone"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Contact Number"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@+id/tf_address"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tf_address"
+                app:layout_constraintTop_toBottomOf="@+id/tf_address" />
 
-        <EditText
-            android:id="@+id/tf_temp"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/thermometer"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Temperature"
-            android:inputType="numberDecimal"
-            app:layout_constraintEnd_toEndOf="@+id/tf_purpose"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tf_purpose"
-            app:layout_constraintTop_toBottomOf="@+id/tf_purpose" />
+            <EditText
+                android:id="@+id/tf_purpose"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/clipboard"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Purpose"
+                android:inputType="textCapSentences"
+                app:layout_constraintEnd_toEndOf="@+id/tf_contact_number"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tf_contact_number"
+                app:layout_constraintTop_toBottomOf="@+id/tf_contact_number" />
 
-        <EditText
-            android:id="@+id/tf_gender"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:drawableLeft="@drawable/gender"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Gender"
-            android:inputType="textCapSentences"
-            app:layout_constraintEnd_toEndOf="@+id/tf_temp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tf_temp"
-            app:layout_constraintTop_toBottomOf="@+id/tf_temp" />
+            <EditText
+                android:id="@+id/tf_temp"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/thermometer"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Temperature"
+                android:inputType="numberDecimal"
+                app:layout_constraintEnd_toEndOf="@+id/tf_purpose"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tf_purpose"
+                app:layout_constraintTop_toBottomOf="@+id/tf_purpose" />
 
-        <Button
-            android:id="@+id/btn_generate"
-            android:layout_width="171dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="30dp"
-            android:background="#8BC34A"
-            android:text="Generate QR Code"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="@+id/tf_gender"
-            app:layout_constraintStart_toStartOf="@+id/tf_gender"
-            app:layout_constraintTop_toBottomOf="@+id/tf_gender" />
+            <EditText
+                android:id="@+id/tf_gender"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/gender"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Gender"
+                android:inputType="textCapSentences"
+                app:layout_constraintEnd_toEndOf="@+id/tf_temp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tf_temp"
+                app:layout_constraintTop_toBottomOf="@+id/tf_temp" />
 
-        <EditText
-            android:id="@+id/tf_fullname"
-            style="@style/Widget.AppCompat.EditText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:drawableLeft="@drawable/user"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Full Name"
-            android:inputType="textCapSentences"
-            app:layout_constraintEnd_toEndOf="@+id/textView"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            <TextView
+                android:id="@+id/building_selector"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:background="@android:drawable/editbox_background"
+                android:drawableRight="@android:drawable/arrow_down_float"
+                android:drawablePadding="16dp"
+                android:hint="Select Buildings"
+                android:textSize="18sp"
+                android:padding="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/tf_gender"
+                app:layout_constraintStart_toStartOf="@+id/tf_gender"
+                app:layout_constraintTop_toBottomOf="@+id/tf_gender" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btn_generate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="#8BC34A"
+                android:text="Generate QR Code"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="@+id/tf_gender"
+                app:layout_constraintStart_toStartOf="@+id/tf_gender"
+                app:layout_constraintTop_toBottomOf="@+id/building_selector" />
+
+            <EditText
+                android:id="@+id/tf_fullname"
+                style="@style/Widget.AppCompat.EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:drawableLeft="@drawable/user"
+                android:drawablePadding="10dp"
+                android:ems="10"
+                android:hint="Full Name"
+                android:inputType="textCapSentences"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </FrameLayout>
