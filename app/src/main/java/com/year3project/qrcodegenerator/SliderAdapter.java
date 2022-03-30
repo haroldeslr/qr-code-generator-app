@@ -26,8 +26,7 @@ public class SliderAdapter extends PagerAdapter {
             R.drawable.step2,
             R.drawable.step3,
             R.drawable.step4,
-            R.drawable.step5,
-            R.drawable.step6
+            R.drawable.step5
     };
 
     @Override
