@@ -26,11 +26,29 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/department_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:text="Select Prefered Department"
+            android:layout_below="@id/text_view_title"/>
+
+        <Spinner
+            android:id="@+id/department_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_below="@id/department_tv"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/announcementRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/text_view_title"
+            android:layout_below="@+id/department_spinner"
             android:clipToPadding="false"
             android:paddingBottom="10dp"
             android:layout_marginTop="20dp" />

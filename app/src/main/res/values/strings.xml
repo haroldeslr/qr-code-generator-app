@@ -1,18 +1,20 @@
 <resources>
     <string name="app_name">QR Code Generator</string>
     <string-array name="buildings_array">
-        <item>PTS</item>
-        <item>CSDL/ITS</item>
-        <item>OP (OFFICE OF THE PRESIDENT)</item>
-        <item>FVR</item>
-        <item>CMA</item>
         <item>BASIC ED</item>
+        <item>CAS</item>
+        <item>CCJE</item>
+        <item>CEA</item>
+        <item>CELA</item>
+        <item>CELA GRAD SCHOOL</item>
         <item>CHS</item>
-        <item>GYM</item>
-        <item>STUDENT PLAZA</item>
-        <item>PHINMA GARDEN</item>
-        <item>NORTH HALL</item>
-        <item>MBA HALL</item>
-        <item>FACULTY CENTER</item>
+        <item>CITE</item>
+        <item>CMA</item>
+        <item>CSDL</item>
+        <item>FINANCE</item>
+        <item>GSD</item>
+        <item>MARKETING</item>
+        <item>REGISTRAR</item>
+        <item>URC</item>
     </string-array>
 </resources>

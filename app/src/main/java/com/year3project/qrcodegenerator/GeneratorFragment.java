@@ -51,7 +51,7 @@ public class GeneratorFragment extends Fragment {
 
     boolean[] selectedLanguage;
     ArrayList<Integer> langList = new ArrayList<>();
-    String[] langArray = {"PTS", "CSDL/ITS", "OP (OFFICE OF THE PRESIDENT)", "FVR", "CMA", "BASIC ED", "CHS", "GYM", "STUDENT PLAZA", "PHINMA GARDEN", "NORTH HALL", "MBA HALL", "FACULTY CENTER"};
+    String[] langArray = {"PTC", "CSDL/ITS", "OP (OFFICE OF THE PRESIDENT)", "FVR", "CMA", "BASIC ED", "CHS", "GYM", "STUDENT PLAZA", "PHINMA GARDEN", "NORTH HALL", "MBA HALL", "FACULTY CENTER"};
 
     private String selectedBuilding;
     private String tempImageName;
