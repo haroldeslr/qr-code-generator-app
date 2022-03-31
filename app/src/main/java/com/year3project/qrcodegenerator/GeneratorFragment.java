@@ -203,7 +203,7 @@ public class GeneratorFragment extends Fragment {
                 contactNumber_text.length() >= 9 && contactNumber_text.length() <= 12 &&
                 address_text.length() >= 3 && address_text.length() <= 70 && age_text.length() <= 2 && temperature_text.length() >= 2 &&
                 temperature_text.length() <= 5 && gender_text.length() >= 4 && gender_text.length() <= 6 &&
-                reason_text.length() >= 4 && reason_text.length() <= 255) {
+                reason_text.length() >= 4 && reason_text.length() <= 255 && selectedBuilding != null) {
             String logData = getFormData();
 
             // save user data to sharedpreferences

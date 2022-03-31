@@ -14,8 +14,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -29,6 +32,7 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
 import retrofit2.Call;
@@ -44,6 +48,7 @@ public class SelfieActivity extends AppCompatActivity {
 
     private String currentPhotoPath;
     private Uri photoURI;
+    private File photoFiles;
 
     public static final String userDataPreferences = "UserDataPreferences";
     public static final String currentPhotoPathKey = "CurrentPhotoPathKey";
@@ -88,6 +93,8 @@ public class SelfieActivity extends AppCompatActivity {
                     photoURI = FileProvider.getUriForFile(getApplicationContext(),
                             "com.example.android.fileprovider",
                             photoFile);
+                    photoFiles = photoFile;
+
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                     startActivityForResult(takePictureIntent, 100);
                 }
@@ -124,46 +131,8 @@ public class SelfieActivity extends AppCompatActivity {
     }
 
     private void setPic() {
-        float imageRotation = getCameraPhotoOrientation(getApplicationContext(), photoURI, currentPhotoPath);
-        imageView.setRotation(imageRotation);
-
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoURI);
-            imageView.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public int getCameraPhotoOrientation(Context context, Uri imageUri,
-                                         String imagePath) {
-        int rotate = 0;
-        try {
-            context.getContentResolver().notifyChange(imageUri, null);
-            File imageFile = new File(imagePath);
-            ExifInterface exif = new ExifInterface(imageFile.getAbsolutePath());
-            int orientation = exif.getAttributeInt(
-                    ExifInterface.TAG_ORIENTATION,
-                    ExifInterface.ORIENTATION_NORMAL);
-
-            switch (orientation) {
-                case ExifInterface.ORIENTATION_ROTATE_270:
-                    rotate = 270;
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_180:
-                    rotate = 180;
-                    break;
-                case ExifInterface.ORIENTATION_ROTATE_90:
-                    rotate = 90;
-                    break;
-            }
-
-            Log.i("RotateImage", "Exif orientation: " + orientation);
-            Log.i("RotateImage", "Rotate value: " + rotate);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return rotate;
+        bitmap = rectifyImage(this, photoFiles);
+        imageView.setImageBitmap(bitmap);
     }
 
     public void fillUpFormButton(View view) {
@@ -190,7 +159,7 @@ public class SelfieActivity extends AppCompatActivity {
         pd.show();
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,75, byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG,50, byteArrayOutputStream);
         byte[] imageInByte = byteArrayOutputStream.toByteArray();
         String encodedImage =  Base64.encodeToString(imageInByte,Base64.DEFAULT);
 
@@ -215,5 +184,42 @@ public class SelfieActivity extends AppCompatActivity {
                 pd.dismiss();
             }
         });
+    }
+
+
+    // test new code
+    public static Bitmap rectifyImage(Context context,File imageFile){
+        Bitmap originalBitmap= BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+        try{
+            Uri uri=Uri.fromFile(imageFile);
+            InputStream input = context.getContentResolver().openInputStream(uri);
+            ExifInterface ei;
+
+            if (Build.VERSION.SDK_INT > 23)
+                ei = new ExifInterface(input);
+            else
+                ei = new ExifInterface(uri.getPath());
+
+            int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    return rotateImage(originalBitmap, 90);
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    return rotateImage(originalBitmap, 180);
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    return rotateImage(originalBitmap, 270);
+                default:
+                    return originalBitmap;
+            }
+        }catch (Exception e){
+            return originalBitmap;
+        }
+    }
+
+    public static Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
     }
 }

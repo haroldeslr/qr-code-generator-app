@@ -136,6 +136,7 @@
                 android:layout_marginTop="15dp"
                 android:background="@android:drawable/editbox_background"
                 android:drawableRight="@android:drawable/arrow_down_float"
+                android:drawableLeft="@drawable/ic_baseline_map_24"
                 android:drawablePadding="16dp"
                 android:hint="Select Buildings"
                 android:textSize="18sp"
